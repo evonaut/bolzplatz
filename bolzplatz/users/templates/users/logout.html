@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends parent_template|default:"users/base_users.html" %}
 
 {% block main %}
 <p>You have logged out!</p>

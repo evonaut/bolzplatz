@@ -2,7 +2,15 @@ from .base import *
 
 DEBUG = True
 
+# Email
+# https://docs.djangoproject.com/en/1.8/topics/email/
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SERVER_EMAIL = 'contact@fc-bolzplatz.eu'
+DEFAULT_FROM_EMAIL = 'no-reply@fc-bolzplatz.eu'
+EMAIL_SUBJECT_PREFIX = '[Bolzplatz] '
+MANAGERS = (
+    ('Us', 'ourselves@fc-bolzplatz.eu'),
+)
 
 DATABASES = {
     "default": {

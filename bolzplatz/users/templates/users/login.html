@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends parent_template|default:"users/base_users.html" %}
 
 {% block main %}
 {% include "users/login_form.html" %}
