@@ -1,11 +1,12 @@
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.template.response import TemplateResponse
+
+from .forms import UserCreationForm
 
 class CreateAccount(View):
     form_class = UserCreationForm
