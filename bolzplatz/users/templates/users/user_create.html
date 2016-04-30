@@ -1,0 +1,13 @@
+{% extends parent_template|default:"users/base_users.html" %}
+
+{% block title %}
+{{ block.super }} - Create Account
+{% endblock %}
+
+{% block main %}
+<form action="{% url 'auth:create' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Create New Account</button>
+</form>
+{% endblock %}
