@@ -1,0 +1,13 @@
+{% extends parent_template|default:"users/base_users.html" %}
+
+{% block title %}
+{{ block.super }} - Select Group
+{% endblock %}
+
+{% block main %}
+<form action="{% url 'auth:create_select_group' slug=slug %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Select Group</button>
+</form>
+{% endblock %}

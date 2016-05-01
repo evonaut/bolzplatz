@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import RedirectView, TemplateView
 
-from .views import CreateAccount
+from .views import CreateAccount, SelectGroup
 
 urlpatterns = [
     url(r'^$',
@@ -23,6 +23,9 @@ urlpatterns = [
     url(r'^create/$',
         CreateAccount.as_view(),
         name='create'),
+    url(r'^create/(?P<slug>[\w\d\-]+)/group/$',
+        SelectGroup.as_view(),
+        name='create_select_group'),
     url(r'^create/done/$',
         TemplateView.as_view(
             template_name=(
