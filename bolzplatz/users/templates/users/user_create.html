@@ -5,9 +5,16 @@
 {% endblock %}
 
 {% block main %}
+<p>
+{% if user.is_authenticated %}
+<p>You need to be logged out to register</p>
+{% else %}
 <form action="{% url 'auth:create' %}" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Create New Account</button>
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">Create New Account</button>
 </form>
+{% endif %}
+</p>
+
 {% endblock %}

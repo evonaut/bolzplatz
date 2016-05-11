@@ -11,6 +11,7 @@ from django.utils.text import slugify
 from .forms import UserCreationForm, GroupSelectForm
 from .models import Profile, Group
 
+
 class CreateAccount(View):
     form_class = UserCreationForm
     success_url = reverse_lazy('auth:create_select_group')
@@ -38,8 +39,7 @@ class CreateAccount(View):
                     bound_form.non_field_errors())
                 for err in errs:
                     error(request, err)
-                return redirect(
-                    'auth:create')
+                return redirect('auth:create')
         return TemplateResponse(
             request,
             self.template_name,
@@ -53,6 +53,9 @@ class SelectGroup(View):
 
     @method_decorator(csrf_protect)
     def get(self, request, slug):
+        user = User.objects.get(username=slug)
+        if user.is_active:
+            return redirect('auth:login')
         return TemplateResponse(
             request,
             self.template_name,
@@ -63,7 +66,9 @@ class SelectGroup(View):
     def post(self, request, slug):
         bound_form = self.form_class(request.POST)
         if bound_form.is_valid():
-            user = User.objects.get(username=slug )
+            user = User.objects.get(username=slug)
+            if user.is_active:
+                return redirect('auth:login')
             Profile.objects.update_or_create(
                 user=user,
                 defaults={
