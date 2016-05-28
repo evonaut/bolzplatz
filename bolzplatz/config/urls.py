@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from users import urls as users_urls
 
-admin.site.site_header = ' Bolzplatz Admin'
+admin.site.site_header = 'Bolzplatz Admin'
 admin.site.site_title = 'Bolzplatz Site Admin'
 
 urlpatterns = [

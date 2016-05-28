@@ -6,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm as BaseUserCreationForm
 
 from .models import Profile, Group
 
-logger = logging.getLogger(__name__)
 
 class UserCreationForm(BaseUserCreationForm):
 

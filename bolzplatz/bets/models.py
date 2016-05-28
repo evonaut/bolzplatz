@@ -32,11 +32,14 @@ class Match(models.Model):
     penalty = models.BooleanField(default=False)
 
     def __str__(self):
-        return '{} : {} ({})'.format(self.team_home, self.team_visitor, self.date)
+        return '{} : {} ({})'.format(
+            self.team_home,
+            self.team_visitor,
+            self.date.strftime('%B %d'))
 
 
 class Bet(models.Model):
-    match = models.ForeignKey(Match)
+    match = models.ForeignKey(Match, verbose_name='Spiel')
     profile = models.ForeignKey('users.Profile')
     score_home = models.PositiveIntegerField()
     score_visitor = models.PositiveIntegerField()

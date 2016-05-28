@@ -1,0 +1,21 @@
+{% extends parent_template|default:"bets/base_bets.html" %}
+
+{% block main %}
+
+<form action="{% url 'bets_create' %}" method="post">
+  {% csrf_token %}
+  {{form.non_field_errors}}
+  {{ form.match.errors }}
+  <p>
+    <label for="{{ form.match.id_for_label}}">Spiel:{{ form.match.label }}</label>
+    {{ form.match }}
+  </p>
+  <p>
+    <label for="id_bet">Tipp:</label>
+    {{ form.score_home }} : {{ form.score_visitor }}
+  </p>
+  <button type="submit">Speichern</button>
+</form>
+
+
+{% endblock %}
