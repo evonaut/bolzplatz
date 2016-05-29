@@ -4,6 +4,7 @@ from django.conf import settings
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+#from django.contrib.auth import get_user
 
 from .forms import BetForm
 from .utils import BetFormValidMixin
@@ -33,7 +34,7 @@ class BetCreate(BetFormValidMixin, View):
         )
 
     def post(self, request):
-        bound_form = self.form_class(request.POST)
+        bound_form = self.form_class(request.POST, user=request.user)
         if bound_form.is_valid():
             new_bet = bound_form.save(request)
             return redirect('bets:bets_create')

@@ -22,6 +22,13 @@ class Player(models.Model):
 
 
 class Match(models.Model):
+    """
+    Model describing a soccer match
+    """
+
+    class Meta:
+        verbose_name_plural = 'matches'
+
     team_home = models.ForeignKey(Team, related_name='match_team_home')
     team_visitor = models.ForeignKey(Team, related_name='match_team_visitor')
     score_home = models.PositiveIntegerField(null=True, blank=True, default=None)
@@ -39,6 +46,13 @@ class Match(models.Model):
 
 
 class Bet(models.Model):
+    """
+    Model describing a bet about a match
+    """
+
+    class Meta:
+        unique_together = (('match', 'user'),)
+
     match = models.ForeignKey(Match, verbose_name='Spiel')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='bets')
     score_home = models.PositiveIntegerField()
