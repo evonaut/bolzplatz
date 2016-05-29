@@ -4,10 +4,10 @@ from django.conf import settings
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-#from django.contrib.auth import get_user
 
 from .forms import BetForm
 from .utils import BetFormValidMixin
+from .models import Bet, Match
 
 
 @login_required
@@ -27,10 +27,12 @@ class BetCreate(BetFormValidMixin, View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
+        form = self.form_class()
+        form.fields['match'].queryset = Match.objects.exclude(bet__user=request.user)
         return render(
             request,
             self.template_name,
-            {'form': self.form_class()}
+            {'form': form}
         )
 
     def post(self, request):

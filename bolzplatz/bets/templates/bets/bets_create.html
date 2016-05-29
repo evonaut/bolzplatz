@@ -2,6 +2,8 @@
 
 {% block main %}
 
+<p>Angemeldet als {{ request.user }}</p>
+
 <form action="{% url 'bets:bets_create' %}" method="post">
   {% csrf_token %}
   {{form.non_field_errors}}

@@ -26,5 +26,3 @@ class BetForm(forms.ModelForm):
         if commit:
             bet.save()
             return bet
-
-
