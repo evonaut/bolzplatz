@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from users import urls as users_urls
+from bets import urls as bets_urls
 
 admin.site.site_header = 'Bolzplatz Admin'
 admin.site.site_title = 'Bolzplatz Site Admin'
@@ -15,5 +16,7 @@ urlpatterns = [
     url(r'^user/',
         include(users_urls, app_name='users', namespace='auth'),
         ),
-    url(r'^bets/', include('bets.urls')),
+    url(r'^bets/',
+        include(bets_urls, app_name='bets', namespace='bets'),
+       ),
 ]

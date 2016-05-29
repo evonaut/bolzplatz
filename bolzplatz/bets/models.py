@@ -40,7 +40,7 @@ class Match(models.Model):
 
 class Bet(models.Model):
     match = models.ForeignKey(Match, verbose_name='Spiel')
-    profile = models.ForeignKey('users.Profile')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='bets')
     score_home = models.PositiveIntegerField()
     score_visitor = models.PositiveIntegerField()
     checked = models.BooleanField(default=False)
@@ -49,5 +49,5 @@ class Bet(models.Model):
 
     def __str__(self):
         return '[{}] {}'.format(
-            self.profile,
+            self.user,
             self.match)

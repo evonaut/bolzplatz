@@ -2,7 +2,7 @@
 
 {% block main %}
 
-<form action="{% url 'bets_create' %}" method="post">
+<form action="{% url 'bets:bets_create' %}" method="post">
   {% csrf_token %}
   {{form.non_field_errors}}
   {{ form.match.errors }}

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.views.generic import View
 
 from .forms import BetForm
+from .utils import BetFormValidMixin
 
 
 def home(request):
@@ -13,7 +14,7 @@ def home(request):
     return render(request, 'bets/bets_home.html')
 
 
-class BetCreate(View):
+class BetCreate(BetFormValidMixin, View):
     form_class = BetForm
     template_name = 'bets/bets_create.html'
 
@@ -27,8 +28,8 @@ class BetCreate(View):
     def post(self, request):
         bound_form = self.form_class(request.POST)
         if bound_form.is_valid():
-            new_bet = bound_form.save()
-            return redirect(new_bet)
+            new_bet = bound_form.save(request)
+            return redirect('bets:bets_create')
         else:
             return render(
                 request,
