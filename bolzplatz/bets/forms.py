@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user
+from django.utils import timezone
 
 from .models import Bet, Match
 
@@ -16,7 +17,9 @@ class BetForm(forms.ModelForm):
     def clean_match(self):
         match = self.cleaned_data['match']
         if Bet.objects.filter(match=match, user=self.user).exists():
-            raise ValidationError('Du hast für dieses Spiel schon einen Tipp abgegeben!')
+            raise ValidationError('You already betted on this match!')
+        if match.date <= timezone.now():
+            raise ValidationError("You can only bet on games that haven't started yet")
         return match
 
     def save(self, request, commit=True):
