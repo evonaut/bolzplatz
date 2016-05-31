@@ -39,10 +39,9 @@ class Match(models.Model):
     penalty = models.BooleanField(default=False)
 
     def __str__(self):
-        return '{} : {} ({})'.format(
+        return '{} : {}'.format(
             self.team_home,
-            self.team_visitor,
-            self.date.strftime('%B %d'))
+            self.team_visitor)
 
 
 class Bet(models.Model):
@@ -52,6 +51,7 @@ class Bet(models.Model):
 
     class Meta:
         unique_together = (('match', 'user'),)
+        permissions = (('evaluate_bets', 'Can evaluate bets'),)
 
     match = models.ForeignKey(Match, verbose_name='Spiel')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='bets')

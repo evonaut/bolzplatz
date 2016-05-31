@@ -14,6 +14,7 @@ class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     group = models.ForeignKey(Group)
     slug = models.SlugField(max_length=30, unique=True)
+    score = models.PositiveIntegerField(default=0)
     about = models.TextField()
 
     def __str__(self):

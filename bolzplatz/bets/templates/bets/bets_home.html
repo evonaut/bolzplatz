@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<p>Bolzplatz ist eine Baustelle</p>
+<h2>My Bets</h2>
+
+<ul>
+{% for bet in bets %}
+    <li>{{ bet.match }} {{ bet.score_home }}:{{ bet.score_visitor }}</li>
+{% empty %}
+    <li><em>No bets vailable</em></li>
+{% endfor %}
+</ul>
 
 <p><a href="{% url 'bets:bets_create' %}">Tipp abgeben</a></p>
+
+{% if perms.bets.evaluate_bets %}
+    <p><a href="{% url 'bets:bets_evaluate' %}">Evaluate Bets</a></p>
+{% endif %}
+
 {% endblock %}
