@@ -3,5 +3,12 @@
 {% block main %}
 <h2>Evaluate Bets</h2>
 
+<ul>
+{% for key, value in scores.items %}
+    <li>{{ key }}: {{ value }} points</li>
+{% empty %}
+    <li><em>Too bad, zero points for everyone.</em></li>
+{% endfor %}
+</ul>
 
 {% endblock %}

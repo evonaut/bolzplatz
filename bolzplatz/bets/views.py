@@ -1,9 +1,9 @@
-import datetime
 from django.shortcuts import get_object_or_404, redirect, render, render_to_response, RequestContext
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 
 from .forms import BetForm
@@ -24,7 +24,7 @@ class BetCreate(BetFormValidMixin, View):
         form = self.form_class()
         # Limit choices to future matches the user hasn't betted on yet
         form.fields['match'].queryset = Match.objects\
-            .exclude(bet__user=request.user).exclude(date__lte=datetime.datetime.now())
+            .exclude(bet__user=request.user).exclude(date__lte=timezone.now())
         return render(
             request,
             self.template_name,
@@ -64,8 +64,52 @@ class BetHome(View):
 class BetEvaluate(View):
     template_name = 'bets/bets_evaluate.html'
 
+    def _tendency(self, difference):
+        if difference == 0:
+            return 0
+        else:
+            return difference / abs(difference)
+
     def get(self, request):
+        bets = Bet.objects.filter(checked=False)
+        scores = {}
+        for bet in bets:
+            if not bet.match.completed:
+                # We don't care about matches that haven't completed yet
+                continue
+            if (bet.match.score_home is None) or (bet.match.score_visitor is None):
+                # We can' evaluate bets on matches that have not been updated with their result
+                continue
+            if bet.modified > bet.match.date:
+                # We don't accept bets on games that already have started
+                bet.checked = True
+                bet.save()
+                continue
+            bet_score_home = bet.score_home
+            bet_score_visitor = bet.score_visitor
+            score_home = bet.match.score_home
+            score_visitor = bet.match.score_visitor
+            diff = score_home - score_visitor
+            diff_bet = bet_score_home - bet_score_visitor
+            score = 0
+            if self._tendency(diff_bet) == self._tendency(diff):
+                # Correct tendency, that justifies two points
+                score += 2
+                if diff_bet == diff:
+                    # Correct difference, let's add another point
+                    score += 1
+                    if bet_score_home == score_home:
+                        # Bet is 100% correct and results in four points
+                        score += 1
+            user = bet.user
+            user.profile.score += score
+            bet.checked = True
+            bet.save()
+            user.profile.save()
+            scores[str(user)] = scores.get(str(user), 0) + score
+
         return render(
             request,
-            self.template_name
+            self.template_name,
+            {'scores': scores}
         )

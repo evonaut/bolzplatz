@@ -35,6 +35,7 @@ class Match(models.Model):
     score_visitor = models.PositiveIntegerField(null=True, blank=True, default=None)
     location = models.CharField(max_length=100, blank=True)
     date = models.DateTimeField()
+    completed = models.BooleanField(default=False)
     overtime = models.BooleanField(default=False)
     penalty = models.BooleanField(default=False)
 
