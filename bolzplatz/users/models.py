@@ -15,7 +15,7 @@ class Profile(models.Model):
     group = models.ForeignKey(Group)
     slug = models.SlugField(max_length=30, unique=True)
     score = models.PositiveIntegerField(default=0)
-    about = models.TextField()
+    about = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.user.get_username()
