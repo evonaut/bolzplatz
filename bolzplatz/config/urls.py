@@ -9,10 +9,7 @@ admin.site.site_header = 'Bolzplatz Admin'
 admin.site.site_title = 'Bolzplatz Site Admin'
 
 urlpatterns = [
-    # Examples:
-    # url(r'^$', 'bolzplatz.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    url(r'^', include(bets_urls), name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^user/', include(users_urls, app_name='users', namespace='auth'),),
     url(r'^bets/', include(bets_urls, app_name='bets', namespace='bets'),),

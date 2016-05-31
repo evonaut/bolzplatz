@@ -1,14 +1,15 @@
 {% extends parent_template|default:"scores/base_scores.html" %}
 
 {% block main %}
-<h2>Scores for {{ group }}</h2>
+<h3>Scores for {{ group }}</h3>
 
-<ol>
-{% for profile in profiles %}
-    <li>{{ profile.slug }} ({{ profile.score }})</li>
+<table class="table table-hover">
+<tr><th>Rank</th><th>User</th><th>Score</th></tr>
+{% for rank in ranking %}
+<tr><td>{{ rank.0 }}</td><td>{{ rank.1 }}</td><td>{{ rank.2 }}</td></tr>
 {% empty %}
-    <li><em>No scores available</em></li>
+    <tr><td colspan=3>No scores available</td></tr>
 {% endfor %}
-</ol>
+</table>
 
 {% endblock %}

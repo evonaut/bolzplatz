@@ -21,7 +21,8 @@ class ScoreHome(View):
         profiles = []
         if slug is not None:
             try:
-                profiles = Profile.objects.filter(group=Group.objects.get(slug=slug)).order_by('score').reverse()
+                profiles = Profile.objects.filter(
+                    group=Group.objects.get(slug=slug)).order_by('score').reverse()
                 group = slug
             except:
                 pass
@@ -29,9 +30,31 @@ class ScoreHome(View):
             profiles = Profile.objects.all().order_by('score').reverse()
             group = 'All Groups'
 
+        ranking = []
+        rank = 0
+        for profile in profiles:
+            this_score = profile.score
+            if rank > 0:
+                if this_score != last_score:
+                    rank += 1
+                this_rank = rank
+            else:
+                rank = 1
+                this_rank = 1
+                last_score = this_score
+            ranking.append((this_rank, str(profile.user), profile.score))
+
+        # Build a list of groups containing members
+        all_groups = Group.objects.all()
+        active_groups = []
+        for this_group in all_groups:
+            if len(this_group.profile_set.all()):
+                active_groups.append(this_group.slug)
+
         return render(
             request,
             self.template_name,
-            {'profiles': profiles,
+            {'ranking': ranking,
+             'active_groups': active_groups,
              'group': group}
         )

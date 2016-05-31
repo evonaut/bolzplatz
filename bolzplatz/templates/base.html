@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 {% load i18n %}
 <head>
   <meta charset="utf-8">
@@ -8,21 +8,57 @@
   <title>{% block title %}{% trans "Welcome to the Bolzplatz!"%}{% endblock %}</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <style type="text/css">
+    #login{
+        cursor: pointer;
+    }
+  </style>
 </head>
 
 <body role="document">
-<p>
-    {% if user.is_authenticated %}
-        <a href="{% url 'auth:logout' %}?next={{ request.path }}">Log Out</a>
-    {% else %}
-        <a href="{% url 'auth:login' %}?next={{ request.path }}">Log In</a>
-    {% endif %}
-</p>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">Bolzplatz 2016</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'bets:bets_home' %}">Bets</a></li>
+      {% if active_groups %}
+      <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Scores
+           <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+           {% for bet_group in active_groups %}
+             <li><a href="{% url 'scores:scores_home' bet_group %}">{{ bet_group }}</a></li>
+           {% endfor %}
+             <li class="divider"></li>
+             <li><a href="{% url 'scores:scores_home' %}">All Groups</a></li>
+           </ul>
+         </li>
+      {% else %}
+      <li><a href="{% url 'scores:scores_home' %}">Scores</a></li>
+      {% endif %}
+      <li><a href="#">Rules</a></li>
+    </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+        <li id="login"><a href="{% url 'auth:logout' %}?next={{ request.path }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'auth:create' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        <li id="login"><a href="{% url 'auth:login' %}?next={{ request.path }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
+      </ul>
+  </div>
+</nav>
+
 {% block main %}
 {% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
