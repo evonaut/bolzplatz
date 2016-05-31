@@ -1,0 +1,14 @@
+{% extends parent_template|default:"scores/base_scores.html" %}
+
+{% block main %}
+<h2>Scores for {{ group }}</h2>
+
+<ol>
+{% for profile in profiles %}
+    <li>{{ profile.slug }} ({{ profile.score }})</li>
+{% empty %}
+    <li><em>No scores available</em></li>
+{% endfor %}
+</ol>
+
+{% endblock %}
