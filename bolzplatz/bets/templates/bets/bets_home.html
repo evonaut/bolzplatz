@@ -5,7 +5,11 @@
 
 <ul>
 {% for bet in bets %}
-    <li>{{ bet.match }} {{ bet.score_home }}:{{ bet.score_visitor }}</li>
+    <li>{{ bet.match }} {{ bet.score_home }}:{{ bet.score_visitor }}
+    {% if bet.score != None %}
+        ({{ bet.match.score_home }}:{{ bet.match.score_visitor }}, {{ bet.score}} points)
+    {% endif %}
+    </li>
 {% empty %}
     <li><em>No bets vailable</em></li>
 {% endfor %}

@@ -52,7 +52,7 @@ class BetHome(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        bets = Bet.objects.filter(user=request.user)
+        bets = Bet.objects.filter(user=request.user).order_by('match__date')
         return render(
             request,
             self.template_name,
@@ -71,7 +71,7 @@ class BetEvaluate(View):
             return difference / abs(difference)
 
     def get(self, request):
-        bets = Bet.objects.filter(checked=False)
+        bets = Bet.objects.filter(score=None)
         scores = {}
         for bet in bets:
             if not bet.match.completed:
@@ -82,7 +82,7 @@ class BetEvaluate(View):
                 continue
             if bet.modified > bet.match.date:
                 # We don't accept bets on games that already have started
-                bet.checked = True
+                bet.score = 0
                 bet.save()
                 continue
             bet_score_home = bet.score_home
@@ -103,7 +103,7 @@ class BetEvaluate(View):
                         score += 1
             user = bet.user
             user.profile.score += score
-            bet.checked = True
+            bet.score = score
             bet.save()
             user.profile.save()
             scores[str(user)] = scores.get(str(user), 0) + score

@@ -58,7 +58,7 @@ class Bet(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='bets')
     score_home = models.PositiveIntegerField()
     score_visitor = models.PositiveIntegerField()
-    checked = models.BooleanField(default=False)
+    score = models.PositiveIntegerField(null=True, blank=True, default=None)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
