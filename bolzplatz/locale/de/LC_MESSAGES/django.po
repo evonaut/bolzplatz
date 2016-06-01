@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-01 10:30+0200\n"
+"POT-Creation-Date: 2016-06-01 10:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgstr "Benutzer"
 msgid "No scores available."
 msgstr "Keine Punkte verfügbar"
 
-#: scores/views.py:32 templates/base.html:36
+#: scores/views.py:32 templates/navbar.html:17
 msgid "All Groups"
 msgstr "Alle Gruppen"
 
@@ -115,27 +115,23 @@ msgstr "Alle Gruppen"
 msgid "Welcome to the Bolzplatz!"
 msgstr "Willkommen auf dem Bolzplatz!"
 
-#: templates/base.html:26
-msgid "Bets"
-msgstr "Meine Tipps"
-
-#: templates/base.html:29 templates/base.html.py:40
+#: templates/navbar.html:10 templates/navbar.html.py:21
 msgid "Scores"
 msgstr "Punkte"
 
-#: templates/base.html:42
+#: templates/navbar.html:23
 msgid "Rules"
 msgstr "Regeln"
 
-#: templates/base.html:46
+#: templates/navbar.html:27
 msgid "Logout"
 msgstr "Abmelden"
 
-#: templates/base.html:48
+#: templates/navbar.html:29
 msgid "Register"
 msgstr "Registrieren"
 
-#: templates/base.html:49
+#: templates/navbar.html:30
 msgid "Login"
 msgstr "Anmelden"
 
@@ -178,3 +174,6 @@ msgstr ""
 "\n"
 "Um zu tippen musst du Mitglied einer Tippgruppe werden. Bitte wähle eine "
 "Gruppe aus der Liste.\n"
+
+#~ msgid "Bets"
+#~ msgstr "Tipps"
