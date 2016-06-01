@@ -1,0 +1,33 @@
+upstream bolzplatz_server {
+  # fail_timeout=0 means we always retry an upstream even if it failed
+  # to return a good HTTP response (in case the Unicorn master nukes a
+  # single worker for timing out).
+  server unix:/srv/bolzplatz/run/gunicorn.sock fail_timeout=0;
+}
+
+server {
+        listen 80;
+        server_name bolzplatz.tips;
+
+        client_max_body_size 4G;
+
+        access_log /var/log/nginx/bolzplatz-access.log;
+        error_log /var/log/nginx/bolzplatz-error.log;
+
+        location /static/ {
+            alias /srv/bolzplatz/app/bolzplatz/static/;
+        }
+
+        location / {
+                proxy_pass http://127.0.0.1:8888;
+                proxy_set_header X-Forwarded-Host $server_name;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+                add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+                if (!-f $request_filename) {
+                        proxy_pass http://bolzplatz_server;
+                         break;
+                }
+        }
+    }
