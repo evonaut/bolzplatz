@@ -1,9 +1,9 @@
 {% extends parent_template|default:"users/base_users.html" %}
-
+{% load i18n %}
 {% block title %}
-{{ block.super }} - Account Created
+{{ block.super }} - {% trans "Account Created" %}
 {% endblock %}
 
 {% block main %}
-<p>Your account has been created!</p>
+<p>{% trans "Your account has been created!" %}</p>
 {% endblock %}

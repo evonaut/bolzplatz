@@ -1,22 +1,22 @@
 {% extends parent_template|default:"bets/base_bets.html" %}
-
+{% load i18n %}
 {% block main %}
 
-<p>Angemeldet als {{ request.user }}</p>
+<p>{% trans "You can place bets on future matches until they start." %}</p>
 
 <form action="{% url 'bets:bets_create' %}" method="post">
   {% csrf_token %}
   {{form.non_field_errors}}
   {{ form.match.errors }}
   <p>
-    <label for="{{ form.match.id_for_label}}">Spiel:{{ form.match.label }}</label>
+    <label for="{{ form.match.id_for_label}}">{{ form.match.label }}</label>
     {{ form.match }}
   </p>
   <p>
-    <label for="id_bet">Tipp:</label>
+    <label for="id_bet">{% trans "Bet:" %}</label>
     {{ form.score_home }} : {{ form.score_visitor }}
   </p>
-  <button type="submit">Speichern</button>
+  <button type="submit">{% trans "Save" %}</button>
 </form>
 
 

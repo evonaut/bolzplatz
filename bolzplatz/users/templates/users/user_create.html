@@ -1,18 +1,18 @@
 {% extends parent_template|default:"users/base_users.html" %}
-
+{% load i18n %}
 {% block title %}
-{{ block.super }} - Create Account
+{{ block.super }} - {% trans "Create Account" %}
 {% endblock %}
 
 {% block main %}
 <p>
 {% if user.is_authenticated %}
-<p>You need to be logged out to register</p>
+<p>{% trans "You need to be logged out to register" %}</p>
 {% else %}
 <form action="{% url 'auth:create' %}" method="post">
 {% csrf_token %}
 {{ form.as_p }}
-<button type="submit">Create New Account</button>
+<button type="submit">{% trans "Create Account" %}</button>
 </form>
 {% endif %}
 </p>

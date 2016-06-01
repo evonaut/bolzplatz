@@ -54,7 +54,7 @@ class Bet(models.Model):
         unique_together = (('match', 'user'),)
         permissions = (('evaluate_bets', 'Can evaluate bets'),)
 
-    match = models.ForeignKey(Match, verbose_name='Spiel')
+    match = models.ForeignKey(Match)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='bets')
     score_home = models.PositiveIntegerField()
     score_visitor = models.PositiveIntegerField()

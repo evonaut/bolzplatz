@@ -1,13 +1,19 @@
 {% extends parent_template|default:"users/base_users.html" %}
-
+{% load i18n %}
 {% block title %}
-{{ block.super }} - Select Group
+{{ block.super }} - {% trans "Select Group" %}
 {% endblock %}
 
 {% block main %}
+<p>
+{% blocktrans %}
+You need to join a group before you can place your bets. Please choose one from the list.
+{% endblocktrans %}
+</p>
+
 <form action="{% url 'auth:create_select_group' slug=slug %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Select Group</button>
+  <button type="submit">{% trans "Select Group" %}</button>
 </form>
 {% endblock %}

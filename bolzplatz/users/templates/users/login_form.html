@@ -1,3 +1,4 @@
+{% load i18n %}
 <form action="{% url 'auth:login' %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}
@@ -7,5 +8,5 @@
       name="next"
       value="{{ next }}">
   {% endif %}
-  <button type="submit">{{ login_button|default:'Anmelden' }}</button>
+  <button type="submit">{{ login_button|default:'{% trans "Login" %}' }}</button>
 </form>

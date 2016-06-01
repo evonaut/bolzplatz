@@ -3,6 +3,7 @@ import logging
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm as BaseUserCreationForm
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Profile, Group
 
@@ -21,7 +22,7 @@ class UserCreationForm(BaseUserCreationForm):
             'profile',
         )
         if username in disallowed:
-            raise ValidationError("A user with that name already exists.")
+            raise ValidationError(_('A user with that name already exists.'))
         return username
 
     def save(self, commit=True):

@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Bolzplatz I18N.
+# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the bolzplatz package.
+# Roger Anton <evonaut@sr1005.de>, 2016.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-29 20:30+0200\n"
+"POT-Creation-Date: 2016-06-01 10:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,163 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/settings/base.py:106
+#: bets/forms.py:21
+msgid "You already betted on this match!"
+msgstr "Du hast für dieses Spiel bereits einen Tipp abgegeben!"
+
+#: bets/forms.py:23
+msgid "You can only bet on games that haven't started yet"
+msgstr "Du kannst nur Tipps für noch nicht laufende Spiele abgeben"
+
+#: bets/templates/bets/bets_create.html:5
+msgid "You can place bets on future matches until they start."
+msgstr "Du kannst bis zum Start eines Spiels Tipps abgeben."
+
+#: bets/templates/bets/bets_create.html:16
+msgid "Bet:"
+msgstr "Tipp:"
+
+#: bets/templates/bets/bets_create.html:19
+msgid "Save"
+msgstr "Speichern"
+
+#: bets/templates/bets/bets_evaluate.html:4
+msgid "Bet Evaluation"
+msgstr "Tippauswertung"
+
+#: bets/templates/bets/bets_evaluate.html:8
+msgid "points"
+msgstr "Punkte"
+
+#: bets/templates/bets/bets_evaluate.html:10
+msgid "Too bad, zero points for everyone."
+msgstr "Keine Punkte für niemand. Das ist sehr schade."
+
+#: bets/templates/bets/bets_home.html:4
+msgid "My Bets"
+msgstr "Meine Tipps"
+
+#: bets/templates/bets/bets_home.html:9
+msgid "Match"
+msgstr "Spiel"
+
+#: bets/templates/bets/bets_home.html:10
+msgid "Date"
+msgstr "Datum"
+
+#: bets/templates/bets/bets_home.html:11
+msgid "Result"
+msgstr "Ergebnis"
+
+#: bets/templates/bets/bets_home.html:12
+#: scores/templates/scores/scores_home.html:7
+msgid "Score"
+msgstr "Punkte"
+
+#: bets/templates/bets/bets_home.html:22
+msgid "You have not placed bets yet."
+msgstr "Du hast noch keine Tipps abgegeben."
+
+#: bets/templates/bets/bets_home.html:26
+msgid "Place Bets"
+msgstr "Tipps abgeben"
+
+#: bets/templates/bets/bets_home.html:29
+msgid "Evaluate Bets"
+msgstr "Tipps auswerten"
+
+#: config/settings/base.py:107
 msgid "English"
 msgstr "Englisch"
 
-#: config/settings/base.py:107
+#: config/settings/base.py:108
 msgid "Deutsch"
 msgstr "Deutsch"
 
-#: templates/base.html:8
+#: scores/templates/scores/scores_home.html:4
+msgid "Scores for:"
+msgstr "Rangliste: "
+
+#: scores/templates/scores/scores_home.html:7
+msgid "Rank"
+msgstr "Rang"
+
+#: scores/templates/scores/scores_home.html:7
+msgid "User"
+msgstr "Benutzer"
+
+#: scores/templates/scores/scores_home.html:11
+msgid "No scores available."
+msgstr "Keine Punkte verfügbar"
+
+#: scores/views.py:32 templates/base.html:36
+msgid "All Groups"
+msgstr "Alle Gruppen"
+
+#: templates/base.html:7
 msgid "Welcome to the Bolzplatz!"
 msgstr "Willkommen auf dem Bolzplatz!"
+
+#: templates/base.html:26
+msgid "Bets"
+msgstr "Meine Tipps"
+
+#: templates/base.html:29 templates/base.html.py:40
+msgid "Scores"
+msgstr "Punkte"
+
+#: templates/base.html:42
+msgid "Rules"
+msgstr "Regeln"
+
+#: templates/base.html:46
+msgid "Logout"
+msgstr "Abmelden"
+
+#: templates/base.html:48
+msgid "Register"
+msgstr "Registrieren"
+
+#: templates/base.html:49
+msgid "Login"
+msgstr "Anmelden"
+
+#: users/forms.py:25
+msgid "A user with that name already exists."
+msgstr "Ein Benutzer dieses Namens existiert bereits."
+
+#: users/templates/users/logout.html:4
+msgid "You are now logged out."
+msgstr "Du bist jetzt abgemeldet."
+
+#: users/templates/users/user_create.html:4
+#: users/templates/users/user_create.html:15
+msgid "Create Account"
+msgstr "Benutzerkonto erstellen"
+
+#: users/templates/users/user_create.html:10
+msgid "You need to be logged out to register"
+msgstr "Du musst abgemeldet sein um ein Benutzerkonto zu erstellen."
+
+#: users/templates/users/user_create_done.html:4
+msgid "Account Created"
+msgstr "Benutzerkonto erstellt"
+
+#: users/templates/users/user_create_done.html:8
+msgid "Your account has been created!"
+msgstr "Dein Benutzerkonto wurde erstellt!"
+
+#: users/templates/users/user_select_group.html:4
+#: users/templates/users/user_select_group.html:17
+msgid "Select Group"
+msgstr "Gruppe auswählen"
+
+#: users/templates/users/user_select_group.html:9
+msgid ""
+"\n"
+"You need to join a group before you can place your bets. Please choose one "
+"from the list.\n"
+msgstr ""
+"\n"
+"Um zu tippen musst du Mitglied einer Tippgruppe werden. Bitte wähle eine "
+"Gruppe aus der Liste.\n"

@@ -1,13 +1,13 @@
 {% extends parent_template|default:"bets/base_bets.html" %}
-
+{% load i18n %}
 {% block main %}
-<h2>Evaluate Bets</h2>
+<h3>{% trans "Bet Evaluation" %}</h3>
 
 <ul>
 {% for key, value in scores.items %}
-    <li>{{ key }}: {{ value }} points</li>
+    <li>{{ key }}: {{ value }} {% trans "points" %}</li>
 {% empty %}
-    <li><em>Too bad, zero points for everyone.</em></li>
+    <li><em>{% trans "Too bad, zero points for everyone." %}</em></li>
 {% endfor %}
 </ul>
 

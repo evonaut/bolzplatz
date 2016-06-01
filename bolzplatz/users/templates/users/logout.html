@@ -1,7 +1,7 @@
 {% extends parent_template|default:"users/base_users.html" %}
-
+{% load i18n %}
 {% block main %}
-<p>You have logged out!</p>
+<p>{% trans "You are now logged out." %}</p>
 
-{% include "users/login_form.html" with login_button='Log Back In' %}
+{% include "users/login_form.html" with login_button='{% trans "Log Back In" %}' %}
 {% endblock %}

@@ -1,14 +1,14 @@
 {% extends parent_template|default:"scores/base_scores.html" %}
-
+{% load i18n %}
 {% block main %}
-<h3>Scores for {{ group }}</h3>
+<h3>{% trans "Scores for:" %} {{ group }}</h3>
 
 <table class="table table-hover">
-<tr><th>Rank</th><th>User</th><th>Score</th></tr>
+<tr><th>{% trans "Rank" %}</th><th>{% trans "User" %}</th><th>{% trans "Score" %}</th></tr>
 {% for rank in ranking %}
 <tr><td>{{ rank.0 }}</td><td>{{ rank.1 }}</td><td>{{ rank.2 }}</td></tr>
 {% empty %}
-    <tr><td colspan=3>No scores available</td></tr>
+    <tr><td colspan=3>{% trans "No scores available." %}</td></tr>
 {% endfor %}
 </table>
 

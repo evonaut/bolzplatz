@@ -5,6 +5,7 @@ from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext as _
 
 from users.models import Profile, Group
 
@@ -28,7 +29,7 @@ class ScoreHome(View):
                 pass
         if not profiles:
             profiles = Profile.objects.all().order_by('score').reverse()
-            group = 'All Groups'
+            group = _('All Groups')
 
         ranking = []
         rank = 0
