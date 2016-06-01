@@ -1,0 +1,17 @@
+[program:bolzplatz]
+; Config snippet to place in /etc/supervisor/conf.d/
+; Enable with:
+; supervisorctl reread && supervisorctl update
+; Check status with:
+; supervisorctl status bolzplatz
+
+; Command to start app
+command = /srv/bolzplatz/app/gunicorn_start.sh
+; User to run as
+user = bolzplatz
+; Where to write log messages
+stdout_logfile = /var/log/supervisor_bolzplatz.log
+; Save stderr in the same log
+redirect_stderr = true
+; Set UTF-8 as default encoding
+environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8
