@@ -8,5 +8,5 @@
       name="next"
       value="{{ next }}">
   {% endif %}
-  <button type="submit">{{ login_button|default:'{% trans "Login" %}' }}</button>
+  {% trans "Login" as button_text %}<button type="submit">{{ login_button|default:button_text }}</button>
 </form>

@@ -2,6 +2,6 @@
 {% load i18n %}
 {% block main %}
 <p>{% trans "You are now logged out." %}</p>
-
-{% include "users/login_form.html" with login_button='{% trans "Log Back In" %}' %}
+% trans "Log Back In" as button_text %}
+{% include "users/login_form.html" with login_button=button_text %}
 {% endblock %}
