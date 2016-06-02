@@ -6,7 +6,7 @@
 
 <form action="{% url 'bets:bets_create' %}" method="post">
   {% csrf_token %}
-  {{form.non_field_errors}}
+  {{ form.non_field_errors }}
   {{ form.match.errors }}
   <p>
     <label for="{{ form.match.id_for_label}}">{{ form.match.label }}</label>

@@ -21,10 +21,15 @@ class BetCreate(BetFormValidMixin, View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        form = self.form_class()
         # Limit choices to future matches the user hasn't betted on yet
-        form.fields['match'].queryset = Match.objects\
+        match_query_set = Match.objects\
             .exclude(bet__user=request.user).exclude(date__lte=timezone.now())
+        query_list = match_query_set[:1]
+        if query_list:
+            form = self.form_class(initial={'match': query_list[0]})
+        else:
+            form = self.form_class()
+        form.fields['match'].queryset = match_query_set
         return render(
             request,
             self.template_name,
