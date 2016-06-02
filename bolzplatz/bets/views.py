@@ -118,3 +118,8 @@ class BetEvaluate(View):
             self.template_name,
             {'scores': scores}
         )
+
+
+@login_required
+def bet_rules(request):
+    return render(request, 'bets/bets_rules.html')

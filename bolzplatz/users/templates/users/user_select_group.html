@@ -10,7 +10,7 @@
 You need to join a group before you can place your bets. Please choose one from the list.
 {% endblocktrans %}
 </p>
-
+<p>{% trans "Please note that you can only be awarded a prize if you join the group of your site." %}</p>
 <form action="{% url 'auth:create_select_group' slug=slug %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}

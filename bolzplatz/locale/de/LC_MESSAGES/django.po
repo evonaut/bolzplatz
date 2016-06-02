@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-01 10:50+0200\n"
+"POT-Creation-Date: 2016-06-02 14:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,6 +83,51 @@ msgstr "Tipps abgeben"
 msgid "Evaluate Bets"
 msgstr "Tipps auswerten"
 
+#: bets/templates/bets/bets_rules.html:4 templates/navbar.html:23
+msgid "Rules"
+msgstr "Regeln"
+
+#: bets/templates/bets/bets_rules.html:8
+msgid "The Rules"
+msgstr "Die Regeln"
+
+#: bets/templates/bets/bets_rules.html:9
+msgid ""
+"You can place your bet until a match starts. If you haven't betted on a game "
+"it will be scored with 0 points. Bets will be evaluated against the final "
+"result of the match. This includes added times and knockouts."
+msgstr ""
+"Du kannst bis zum Spielanfang einen Tipp abgeben. Wenn du auf ein Spiel "
+"nicht getippt hast, wird es mit 0 Punkten gewertet. Für die Bewertung zählt "
+"das Endergebnis inklusive eventueller Verlängerung und Elfmeterschießen."
+
+#: bets/templates/bets/bets_rules.html:11
+msgid "Points are awarded as follows:"
+msgstr "Punkte werden wie folgt vergeben:"
+
+#: bets/templates/bets/bets_rules.html:14
+msgid "Correct winner"
+msgstr "Richtiger Gewinner"
+
+#: bets/templates/bets/bets_rules.html:14
+#: bets/templates/bets/bets_rules.html:15
+#: bets/templates/bets/bets_rules.html:16
+#: bets/templates/bets/bets_rules.html:17
+msgid "Points"
+msgstr "Punkte"
+
+#: bets/templates/bets/bets_rules.html:15
+msgid "Correct goal difference"
+msgstr "Richtige Tordifferenz"
+
+#: bets/templates/bets/bets_rules.html:16
+msgid "Draw (without exact result)"
+msgstr "Unentschieden (ohne exaktes Ergebnis)"
+
+#: bets/templates/bets/bets_rules.html:17
+msgid "Correct bet"
+msgstr "Richtiger Tipp"
+
 #: config/settings/base.py:107
 msgid "English"
 msgstr "Englisch"
@@ -119,10 +164,6 @@ msgstr "Willkommen auf dem Bolzplatz!"
 msgid "Scores"
 msgstr "Punkte"
 
-#: templates/navbar.html:23
-msgid "Rules"
-msgstr "Regeln"
-
 #: templates/navbar.html:27
 msgid "Logout"
 msgstr "Abmelden"
@@ -131,7 +172,7 @@ msgstr "Abmelden"
 msgid "Register"
 msgstr "Registrieren"
 
-#: templates/navbar.html:30
+#: templates/navbar.html:30 users/templates/users/login_form.html:11
 msgid "Login"
 msgstr "Anmelden"
 
@@ -144,13 +185,22 @@ msgid "You are now logged out."
 msgstr "Du bist jetzt abgemeldet."
 
 #: users/templates/users/user_create.html:4
-#: users/templates/users/user_create.html:15
+#: users/templates/users/user_create.html:17
 msgid "Create Account"
 msgstr "Benutzerkonto erstellen"
 
 #: users/templates/users/user_create.html:10
 msgid "You need to be logged out to register"
 msgstr "Du musst abgemeldet sein um ein Benutzerkonto zu erstellen."
+
+#: users/templates/users/user_create.html:12
+msgid "Please use your login as username to be able to obtain prizes."
+msgstr "Bitte verwende deinen Login als Benutzernamen um Preise zu gewinnen."
+
+#: users/templates/users/user_create.html:13
+msgid "Please use a password that isn't used anywhere else."
+msgstr ""
+"Bitte wähle ein Passwort, das du nirgendwo an anderer Stelle verwendest."
 
 #: users/templates/users/user_create_done.html:4
 msgid "Account Created"
@@ -174,6 +224,14 @@ msgstr ""
 "\n"
 "Um zu tippen musst du Mitglied einer Tippgruppe werden. Bitte wähle eine "
 "Gruppe aus der Liste.\n"
+
+#: users/templates/users/user_select_group.html:13
+msgid ""
+"Please note that you can only be awarded a prize if you join the group of "
+"your site."
+msgstr ""
+"Bitte beachte dass nur am Gewinnspiel deines eigenen Standorts teilnehmen "
+"kannst."
 
 #~ msgid "Bets"
 #~ msgstr "Tipps"

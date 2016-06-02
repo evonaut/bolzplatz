@@ -9,6 +9,8 @@
 {% if user.is_authenticated %}
 <p>{% trans "You need to be logged out to register" %}</p>
 {% else %}
+<p>{% trans "Please use your login as username to be able to obtain prizes." %}</p>
+<p>{% trans "Please use a password that isn't used anywhere else." %}</p>
 <form action="{% url 'auth:create' %}" method="post">
 {% csrf_token %}
 {{ form.as_p }}

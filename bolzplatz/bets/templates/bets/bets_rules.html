@@ -1,0 +1,19 @@
+{% extends parent_template|default:"bets/base_bets.html" %}
+{% load i18n %}
+{% block title %}
+{{ block.super }} - {% trans "Rules" %}
+{% endblock %}
+
+{% block main %}
+<h3>{% trans "The Rules" %}</h3>
+<p>{% trans "You can place your bet until a match starts. If you haven't betted on a game it will be scored with 0 points. Bets will be evaluated against the final result of the match. This includes added times and knockouts." %}</p>
+
+<p>{% trans "Points are awarded as follows:" %}</p>
+
+<table class="table table-condensed">
+    <tr><td>{% trans "Correct winner" %}</td><td>2 {% trans "Points" %}</td></tr>
+    <tr><td>{% trans "Correct goal difference" %}</td><td>3 {% trans "Points" %}</td></tr>
+    <tr><td>{% trans "Draw (without exact result)" %}</td><td>3 {% trans "Points" %}</td></tr>
+    <tr><td>{% trans "Correct bet" %}</td><td>4 {% trans "Points" %}</td></tr>
+</table>
+{% endblock %}
