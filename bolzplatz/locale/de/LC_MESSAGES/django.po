@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-03 13:52+0200\n"
+"POT-Creation-Date: 2016-06-03 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,66 +26,70 @@ msgstr "Du hast für dieses Spiel bereits einen Tipp abgegeben!"
 msgid "You can only bet on games that haven't started yet"
 msgstr "Du kannst nur Tipps für noch nicht laufende Spiele abgeben"
 
-#: bets/templates/bets/bets_create.html:5
+msgid "Create Bets"
+msgstr "Tippen"
+
+#: bets/templates/bets/bets_create.html:8
 msgid "You can place bets on future matches until they start."
 msgstr "Du kannst bis zum Start eines Spiels Tipps abgeben."
 
-#: bets/templates/bets/bets_create.html:16
+#: bets/templates/bets/bets_create.html:19
 msgid "Bet:"
 msgstr "Tipp:"
 
-#: bets/templates/bets/bets_create.html:19
+#: bets/templates/bets/bets_create.html:22
 msgid "Save"
 msgstr "Speichern"
 
 #: bets/templates/bets/bets_evaluate.html:4
+#: bets/templates/bets/bets_home.html:39
+msgid "Evaluate Bets"
+msgstr "Tippauswertung"
+
+#: bets/templates/bets/bets_evaluate.html:7
 msgid "Bet Evaluation"
 msgstr "Tippauswertung"
 
-#: bets/templates/bets/bets_evaluate.html:8
+#: bets/templates/bets/bets_evaluate.html:11
 msgid "points"
 msgstr "Punkte"
 
-#: bets/templates/bets/bets_evaluate.html:10
+#: bets/templates/bets/bets_evaluate.html:13
 msgid "Too bad, zero points for everyone."
 msgstr "Keine Punkte für niemand. Das ist sehr schade."
 
-#: bets/templates/bets/bets_home.html:4
+#: bets/templates/bets/bets_home.html:4 bets/templates/bets/bets_home.html:7
 msgid "My Bets"
 msgstr "Meine Tipps"
 
-#: bets/templates/bets/bets_home.html:9
+#: bets/templates/bets/bets_home.html:12
 msgid "Match"
 msgstr "Spiel"
 
-#: bets/templates/bets/bets_home.html:10
+#: bets/templates/bets/bets_home.html:13
 msgid "Date"
 msgstr "Datum"
 
-#: bets/templates/bets/bets_home.html:11
+#: bets/templates/bets/bets_home.html:14
 msgid "Bet"
 msgstr "Tipp"
 
-#: bets/templates/bets/bets_home.html:12
+#: bets/templates/bets/bets_home.html:15
 msgid "Result"
 msgstr "Ergebnis"
 
-#: bets/templates/bets/bets_home.html:13
+#: bets/templates/bets/bets_home.html:16
 #: scores/templates/scores/scores_home.html:7
 msgid "Score"
 msgstr "Punkte"
 
-#: bets/templates/bets/bets_home.html:29
+#: bets/templates/bets/bets_home.html:32
 msgid "You have not placed bets yet."
 msgstr "Du hast noch keine Tipps abgegeben."
 
-#: bets/templates/bets/bets_home.html:33
+#: bets/templates/bets/bets_home.html:36
 msgid "Place Bets"
 msgstr "Tipps abgeben"
-
-#: bets/templates/bets/bets_home.html:36
-msgid "Evaluate Bets"
-msgstr "Tipps auswerten"
 
 #: bets/templates/bets/bets_rules.html:4 templates/navbar.html:23
 msgid "Rules"
@@ -168,15 +172,19 @@ msgstr "Euro 2016 Tippspiel"
 msgid "Scores"
 msgstr "Punkte"
 
-#: templates/navbar.html:27
+#: templates/navbar.html:24
+msgid "Imprint"
+msgstr "Impressum"
+
+#: templates/navbar.html:28
 msgid "Logout"
 msgstr "Abmelden"
 
-#: templates/navbar.html:29
+#: templates/navbar.html:30
 msgid "Register"
 msgstr "Registrieren"
 
-#: templates/navbar.html:30 users/templates/users/login_form.html:11
+#: templates/navbar.html:31 users/templates/users/login_form.html:11
 msgid "Login"
 msgstr "Anmelden"
 
@@ -245,5 +253,5 @@ msgstr ""
 #~ msgid "Welcome to the Bolzplatz!"
 #~ msgstr "Willkommen auf dem Bolzplatz!"
 
-msgid "Bets"
-msgstr "Tipps"
+#~ msgid "Bets"
+#~ msgstr "Tipps"
