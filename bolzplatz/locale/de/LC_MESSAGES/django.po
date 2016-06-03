@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 14:30+0200\n"
+"POT-Creation-Date: 2016-06-03 13:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,23 +63,27 @@ msgid "Date"
 msgstr "Datum"
 
 #: bets/templates/bets/bets_home.html:11
+msgid "Bet"
+msgstr "Tipp"
+
+#: bets/templates/bets/bets_home.html:12
 msgid "Result"
 msgstr "Ergebnis"
 
-#: bets/templates/bets/bets_home.html:12
+#: bets/templates/bets/bets_home.html:13
 #: scores/templates/scores/scores_home.html:7
 msgid "Score"
 msgstr "Punkte"
 
-#: bets/templates/bets/bets_home.html:22
+#: bets/templates/bets/bets_home.html:29
 msgid "You have not placed bets yet."
 msgstr "Du hast noch keine Tipps abgegeben."
 
-#: bets/templates/bets/bets_home.html:26
+#: bets/templates/bets/bets_home.html:33
 msgid "Place Bets"
 msgstr "Tipps abgeben"
 
-#: bets/templates/bets/bets_home.html:29
+#: bets/templates/bets/bets_home.html:36
 msgid "Evaluate Bets"
 msgstr "Tipps auswerten"
 
@@ -157,8 +161,8 @@ msgid "All Groups"
 msgstr "Alle Gruppen"
 
 #: templates/base.html:7
-msgid "Welcome to the Bolzplatz!"
-msgstr "Willkommen auf dem Bolzplatz!"
+msgid "Euro 2016 Betting"
+msgstr "Euro 2016 Tippspiel"
 
 #: templates/navbar.html:10 templates/navbar.html.py:21
 msgid "Scores"
@@ -233,5 +237,13 @@ msgstr ""
 "Bitte beachte dass nur am Gewinnspiel deines eigenen Standorts teilnehmen "
 "kannst."
 
-#~ msgid "Bets"
-#~ msgstr "Tipps"
+#, fuzzy
+#~| msgid "Result"
+#~ msgid "Bet (Result)"
+#~ msgstr "Ergebnis"
+
+#~ msgid "Welcome to the Bolzplatz!"
+#~ msgstr "Willkommen auf dem Bolzplatz!"
+
+msgid "Bets"
+msgstr "Tipps"
