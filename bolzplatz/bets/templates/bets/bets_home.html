@@ -17,7 +17,7 @@
     <td>{{ bet.match }}</td>
     <td>{{ bet.match.date }}</td>
     <td>{{ bet.score_home }}:{{ bet.score_visitor }}</td>
-    <td>{% if bet.match.completed and bet.match.score_home and bet.match.score_visitor %}
+    <td>{% if bet.match.completed %}
            {{ bet.match.score_home }}:{{ bet.match.score_visitor }}
         {% else %}
             -
