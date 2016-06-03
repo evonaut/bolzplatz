@@ -207,7 +207,7 @@ msgstr "Du musst abgemeldet sein um ein Benutzerkonto zu erstellen."
 
 #: users/templates/users/user_create.html:12
 msgid "Please use your login as username to be able to obtain prizes."
-msgstr "Bitte verwende deinen Login als Benutzernamen um Preise zu gewinnen."
+msgstr "Bitte verwende deinen Login als Benutzernamen, damit wir am Schluss wissen, wer einen Preis gewonnen hat. Wenn du einen anderen Benutzernamen verwendest, bist du von der Preisvergabe leider ausgeschlossen."
 
 #: users/templates/users/user_create.html:13
 msgid "Please use a password that isn't used anywhere else."
