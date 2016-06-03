@@ -1,5 +1,8 @@
 {% extends parent_template|default:"bets/base_bets.html" %}
 {% load i18n %}
+{% block title %}
+{{ block.super }} - {% trans "Create Bets" %}
+{% endblock %}
 {% block main %}
 
 <p>{% trans "You can place bets on future matches until they start." %}</p>

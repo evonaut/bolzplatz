@@ -123,3 +123,6 @@ class BetEvaluate(View):
 @login_required
 def bet_rules(request):
     return render(request, 'bets/bets_rules.html')
+
+def bet_imprint(request):
+    return render(request, 'bets/bets_imprint.html')

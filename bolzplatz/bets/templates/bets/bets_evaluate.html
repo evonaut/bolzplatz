@@ -1,5 +1,8 @@
 {% extends parent_template|default:"bets/base_bets.html" %}
 {% load i18n %}
+{% block title %}
+{{ block.super }} - {% trans "Evaluate Bets" %}
+{% endblock %}
 {% block main %}
 <h3>{% trans "Bet Evaluation" %}</h3>
 
