@@ -8,14 +8,18 @@
 <tr>
     <th>{% trans "Match" %}</th>
     <th>{% trans "Date" %}</th>
-    <th>{% trans "Result" %}</th>
+    <th>{% trans "Bet (Result)" %}</th>
     <th>{% trans "Score" %}</th>
 </tr>
 {% for bet in bets %}
 <tr>
     <td>{{ bet.match }}</td>
     <td>{{ bet.match.date }}</td>
-    <td>{{ bet.score_home }}:{{ bet.score_visitor }}</td>
+    <td>{{ bet.score_home }}:{{ bet.score_visitor }}
+        {% if bet.match.completed and bet.match.score_home and bet.match.score_visitor %}
+           ({{ bet.match.score_home }}:{{ bet.match.score_visitor }})
+        {% endif %}
+    </td>
     <td>{% if bet.score = None %}-{% else %}{{ bet.score}}{% endif %}</td>
 </tr>
 {% empty %}
