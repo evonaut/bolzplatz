@@ -1,0 +1,10 @@
+{% extends parent_template|default:"bets/base_bets.html" %}
+{% block title %}
+{{ block.super }} - Impressum
+{% endblock %}
+
+{% block main %}
+
+<!-- Put required legal stuff here -->
+
+{% endblock %}

@@ -67,3 +67,8 @@ target/
 
 # Komodo projects
 *.komodoproject
+
+# Project specific custom files
+bolzplatz/templates/stats.html
+bolzplatz/bets/templates/bets/bets_imprint.html
+
