@@ -36,5 +36,10 @@ class UserCreationForm(BaseUserCreationForm):
 
 class GroupSelectForm(forms.Form):
     group = forms.ModelChoiceField(
-        queryset=Group.objects.all(),
-        empty_label=None)
+        queryset=Group.objects.all().order_by('slug'))
+
+    def clean_group(self):
+        group = self.cleaned_data['group']
+        if not group:
+            raise ValidationError(_('Please select a group.'))
+        return group

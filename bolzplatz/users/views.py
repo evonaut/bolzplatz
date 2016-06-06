@@ -65,8 +65,8 @@ class SelectGroup(View):
     @method_decorator(csrf_protect)
     def post(self, request, slug):
         bound_form = self.form_class(request.POST)
+        user = User.objects.get(username=slug)
         if bound_form.is_valid():
-            user = User.objects.get(username=slug)
             if user.is_active:
                 return redirect('auth:login')
             Profile.objects.update_or_create(
@@ -83,4 +83,5 @@ class SelectGroup(View):
         return TemplateResponse(
             request,
             self.template_name,
-            {'form': bound_form})
+            {'form': bound_form,
+             'slug': slugify(user.get_username())})
