@@ -42,6 +42,52 @@ class BetCreate(BetFormValidMixin, View):
             new_bet = bound_form.save(request)
             return redirect('bets:bets_create')
         else:
+            match_query_set = Match.objects\
+                .exclude(bet__user=request.user).exclude(date__lte=timezone.now())
+            query_list = match_query_set[:1]
+            if query_list:
+                bound_form = self.form_class(
+                    request.POST,
+                    user=request.user,
+                    initial={'match': query_list[0]})
+            else:
+                bound_form = self.form_class(request.POST, user=request.user)
+            bound_form.fields['match'].queryset = match_query_set
+            return render(
+                request,
+                self.template_name,
+                {'form': bound_form}
+            )
+
+
+class BetChange(BetFormValidMixin, View):
+    form_class = BetForm
+    template_name = 'bets/bets_change.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, id):
+        try:
+            bet = Bet.objects.get(pk=id)
+            if bet.user != request.user:
+                # Changing other users' bets is bad style
+                bet = None
+        except:
+            bet = None
+        return render(
+            request,
+            self.template_name,
+            {'id': id,
+             'bet': bet})
+
+    def post(self, request):
+        bound_form = self.form_class(request.POST, user=request.user)
+        if bound_form.is_valid():
+            new_bet = bound_form.save(request)
+            return redirect('bets:bets_create')
+        else:
             return render(
                 request,
                 self.template_name,
@@ -58,10 +104,12 @@ class BetHome(View):
 
     def get(self, request):
         bets = Bet.objects.filter(user=request.user).order_by('match__date')
+        now = timezone.now()
         return render(
             request,
             self.template_name,
-            {'bets': bets}
+            {'bets': bets,
+             'now': now}
         )
 
 
@@ -123,6 +171,7 @@ class BetEvaluate(View):
 @login_required
 def bet_rules(request):
     return render(request, 'bets/bets_rules.html')
+
 
 def bet_imprint(request):
     return render(request, 'bets/bets_imprint.html')

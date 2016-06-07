@@ -1,0 +1,14 @@
+{% extends parent_template|default:"bets/base_bets.html" %}
+{% load i18n %}
+{% block title %}
+{{ block.super }} - {% trans "Change Bets" %}
+{% endblock %}
+{% block main %}
+
+{% if bet == None %}
+    <p>Du kannst diesen Tipp nicht ändern!</p>
+{% else %}
+<p> Ich möchte Wette {{ id }} ändern!</p>
+{% endif %}
+
+{% endblock %}

@@ -18,8 +18,13 @@
 {% for bet in bets %}
 <tr>
     <td>{{ bet.match }}</td>
-    <td>{{ bet.match.date }}</td>
-    <td>{{ bet.score_home }}:{{ bet.score_visitor }}</td>
+    <td>{{ bet.match.date }} - {{ now }}</td>
+    <td>{% if bet.match.date > now %}
+        <a href="{% url 'bets:bets_change' id=bet.pk %}">{{ bet.score_home }}:{{ bet.score_visitor }}</a>
+        {% else %}
+        {{ bet.score_home }}:{{ bet.score_visitor }}
+        {% endif %}
+    </td>
     <td>{% if bet.match.completed %}
            {{ bet.match.score_home }}:{{ bet.match.score_visitor }}
         {% else %}
