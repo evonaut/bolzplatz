@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-03 14:47+0200\n"
+"POT-Creation-Date: 2016-06-08 15:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: bets/forms.py:21
+#: bets/forms.py:22
 msgid "You already betted on this match!"
 msgstr "Du hast für dieses Spiel bereits einen Tipp abgegeben!"
 
-#: bets/forms.py:23
+#: bets/forms.py:24
 msgid "You can only bet on games that haven't started yet"
 msgstr "Du kannst nur Tipps für noch nicht laufende Spiele abgeben"
 
+msgid "You can only change bets for games that haven't started yet"
+msgstr "Tipps können nur für noch nicht gestartete Spiele geändert werden"
+
+#: bets/templates/bets/bets_change.html:4
+#: bets/templates/bets/bets_change.html:7
+msgid "Change Bet"
+msgstr "Tipp ändern"
+
+#: bets/templates/bets/bets_change.html:9
+
+msgid "Match:"
+msgstr "Spiel:"
+
+#: bets/templates/bets/bets_change.html:16
+#: bets/templates/bets/bets_create.html:19
+msgid "Bet:"
+msgstr "Tipp:"
+
+#: bets/templates/bets/bets_change.html:19
+#: bets/templates/bets/bets_create.html:22
+msgid "Save"
+msgstr "Speichern"
+
+#: bets/templates/bets/bets_create.html:4
 msgid "Create Bets"
 msgstr "Tippen"
 
@@ -33,16 +57,8 @@ msgstr "Tippen"
 msgid "You can place bets on future matches until they start."
 msgstr "Du kannst bis zum Start eines Spiels Tipps abgeben."
 
-#: bets/templates/bets/bets_create.html:19
-msgid "Bet:"
-msgstr "Tipp:"
-
-#: bets/templates/bets/bets_create.html:22
-msgid "Save"
-msgstr "Speichern"
-
 #: bets/templates/bets/bets_evaluate.html:4
-#: bets/templates/bets/bets_home.html:39
+#: bets/templates/bets/bets_home.html:44
 msgid "Evaluate Bets"
 msgstr "Tippauswertung"
 
@@ -83,11 +99,11 @@ msgstr "Ergebnis"
 msgid "Score"
 msgstr "Punkte"
 
-#: bets/templates/bets/bets_home.html:32
+#: bets/templates/bets/bets_home.html:37
 msgid "You have not placed bets yet."
 msgstr "Du hast noch keine Tipps abgegeben."
 
-#: bets/templates/bets/bets_home.html:36
+#: bets/templates/bets/bets_home.html:41
 msgid "Place Bets"
 msgstr "Tipps abgeben"
 
@@ -110,31 +126,46 @@ msgstr ""
 "das Endergebnis inklusive eventueller Verlängerung und Elfmeterschießen."
 
 #: bets/templates/bets/bets_rules.html:11
-msgid "Points are awarded as follows:"
-msgstr "Punkte werden wie folgt vergeben:"
+msgid "Bets will be evaluated on the day following the match latest."
+msgstr "Tipps werden spätestens am Tag nach dem jeweiligen Spiel ausgewertet."
 
-#: bets/templates/bets/bets_rules.html:14
-msgid "Correct winner"
-msgstr "Richtiger Gewinner"
-
-#: bets/templates/bets/bets_rules.html:14
-#: bets/templates/bets/bets_rules.html:15
-#: bets/templates/bets/bets_rules.html:16
-#: bets/templates/bets/bets_rules.html:17
-msgid "Points"
+#: bets/templates/bets/bets_rules.html:13 templates/navbar.html:10
+#: templates/navbar.html.py:21
+msgid "Scores"
 msgstr "Punkte"
 
 #: bets/templates/bets/bets_rules.html:15
-msgid "Correct goal difference"
-msgstr "Richtige Tordifferenz"
+msgid "Points are awarded as follows:"
+msgstr "Punkte werden wie folgt vergeben:"
 
-#: bets/templates/bets/bets_rules.html:16
-msgid "Draw (without exact result)"
-msgstr "Unentschieden (ohne exaktes Ergebnis)"
+#: bets/templates/bets/bets_rules.html:20
+msgid "Tendency"
+msgstr "Tendenz"
 
-#: bets/templates/bets/bets_rules.html:17
-msgid "Correct bet"
-msgstr "Richtiger Tipp"
+#: bets/templates/bets/bets_rules.html:21
+msgid "Goal Difference"
+msgstr "Tordifferenz"
+
+#: bets/templates/bets/bets_rules.html:22
+#, fuzzy
+msgid "Correct Result"
+msgstr "Richtiger Endstand"
+
+#: bets/templates/bets/bets_rules.html:25
+msgid "Win"
+msgstr "Sieg"
+
+#: bets/templates/bets/bets_rules.html:26
+#: bets/templates/bets/bets_rules.html:27
+#: bets/templates/bets/bets_rules.html:28
+#: bets/templates/bets/bets_rules.html:33
+#: bets/templates/bets/bets_rules.html:34
+msgid "Points"
+msgstr "Punkte"
+
+#: bets/templates/bets/bets_rules.html:31
+msgid "Draw"
+msgstr "Unentschieden"
 
 #: config/settings/base.py:107
 msgid "English"
@@ -168,10 +199,6 @@ msgstr "Alle Gruppen"
 msgid "Euro 2016 Betting"
 msgstr "Euro 2016 Tippspiel"
 
-#: templates/navbar.html:10 templates/navbar.html.py:21
-msgid "Scores"
-msgstr "Punkte"
-
 #: templates/navbar.html:24
 msgid "Imprint"
 msgstr "Impressum"
@@ -192,6 +219,10 @@ msgstr "Anmelden"
 msgid "A user with that name already exists."
 msgstr "Ein Benutzer dieses Namens existiert bereits."
 
+#: users/forms.py:44
+msgid "Please select a group."
+msgstr ""
+
 #: users/templates/users/logout.html:4
 msgid "You are now logged out."
 msgstr "Du bist jetzt abgemeldet."
@@ -207,7 +238,10 @@ msgstr "Du musst abgemeldet sein um ein Benutzerkonto zu erstellen."
 
 #: users/templates/users/user_create.html:12
 msgid "Please use your login as username to be able to obtain prizes."
-msgstr "Bitte verwende deinen Login als Benutzernamen, damit wir am Schluss wissen, wer einen Preis gewonnen hat. Wenn du einen anderen Benutzernamen verwendest, bist du von der Preisvergabe leider ausgeschlossen."
+msgstr ""
+"Bitte verwende deinen Login als Benutzernamen, damit wir am Schluss wissen, "
+"wer einen Preis gewonnen hat. Wenn du einen anderen Benutzernamen "
+"verwendest, bist du von der Preisvergabe leider ausgeschlossen."
 
 #: users/templates/users/user_create.html:13
 msgid "Please use a password that isn't used anywhere else."
@@ -244,6 +278,12 @@ msgid ""
 msgstr ""
 "Bitte beachte dass nur am Gewinnspiel deines eigenen Standorts teilnehmen "
 "kannst."
+
+#~ msgid "Correct winner"
+#~ msgstr "Richtiger Gewinner"
+
+#~ msgid "Draw (without exact result)"
+#~ msgstr "Unentschieden (ohne exaktes Ergebnis)"
 
 #, fuzzy
 #~| msgid "Result"

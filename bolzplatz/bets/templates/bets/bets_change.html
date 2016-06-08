@@ -1,16 +1,12 @@
 {% extends parent_template|default:"bets/base_bets.html" %}
 {% load i18n %}
 {% block title %}
-{{ block.super }} - {% trans "Change Bets" %}
+{{ block.super }} - {% trans "Change Bet" %}
 {% endblock %}
 {% block main %}
+<h3>{% trans "Change Bet" %}</h3>
 
-{% if bet == None %}
-    <p>Du kannst diesen Tipp nicht ändern!</p>
-{% else %}
-<p> Ich möchte Wette {{ id }} ändern!</p>
-
-<p> Match: {{ bet.match }}</p>
+<p> {% trans "Match:" %} <strong>{{ bet.match }}</strong></p>
 
 <form action="{% url 'bets:bets_change' id=bet.pk %}" method="post">
   {% csrf_token %}
@@ -22,7 +18,5 @@
   </p>
   <button type="submit">{% trans "Save" %}</button>
 </form>
-
-{% endif %}
 
 {% endblock %}

@@ -8,12 +8,30 @@
 <h3>{% trans "The Rules" %}</h3>
 <p>{% trans "You can place your bet until a match starts. If you haven't betted on a game it will be scored with 0 points. Bets will be evaluated against the final result of the match. This includes added times and knockouts." %}</p>
 
+<p>{% trans "Bets will be evaluated on the day following the match latest." %}</p>
+
+<h3>{% trans "Scores" %}</h3>
+
 <p>{% trans "Points are awarded as follows:" %}</p>
 
 <table class="table table-condensed">
-    <tr><td>{% trans "Correct winner" %}</td><td>2 {% trans "Points" %}</td></tr>
-    <tr><td>{% trans "Correct goal difference" %}</td><td>3 {% trans "Points" %}</td></tr>
-    <tr><td>{% trans "Draw (without exact result)" %}</td><td>3 {% trans "Points" %}</td></tr>
-    <tr><td>{% trans "Correct bet" %}</td><td>4 {% trans "Points" %}</td></tr>
+    <tr class="active">
+        <th></th>
+        <th>{% trans "Tendency" %}</th>
+        <th>{% trans "Goal Difference" %}</th>
+        <th>{% trans "Correct Result" %}</th>
+    </tr>
+    <tr>
+        <th class="active">{% trans "Win" %}</th>
+        <td>2 {% trans "Points" %}</td>
+        <td>3 {% trans "Points" %}</td>
+        <td>4 {% trans "Points" %}</td>
+    </tr>
+    <tr>
+        <th class="active">{% trans "Draw" %}</th>
+        <td>-</td>
+        <td>3 {% trans "Points" %}</td>
+        <td>4 {% trans "Points" %}</td>
+    </tr>
 </table>
 {% endblock %}
