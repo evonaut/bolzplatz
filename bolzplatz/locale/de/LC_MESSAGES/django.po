@@ -147,7 +147,6 @@ msgid "Goal Difference"
 msgstr "Tordifferenz"
 
 #: bets/templates/bets/bets_rules.html:22
-#, fuzzy
 msgid "Correct Result"
 msgstr "Richtiger Endstand"
 
