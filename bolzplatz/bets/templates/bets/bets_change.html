@@ -9,6 +9,20 @@
     <p>Du kannst diesen Tipp nicht ändern!</p>
 {% else %}
 <p> Ich möchte Wette {{ id }} ändern!</p>
+
+<p> Match: {{ bet.match }}</p>
+
+<form action="{% url 'bets:bets_change' id=bet.pk %}" method="post">
+  {% csrf_token %}
+  {{ form.match }}
+  <p>{{ form.match.errors }}</p>
+  <p>
+    <label for="id_bet">{% trans "Bet:" %}</label>
+    {{ form.score_home }} : {{ form.score_visitor }}
+  </p>
+  <button type="submit">{% trans "Save" %}</button>
+</form>
+
 {% endif %}
 
 {% endblock %}

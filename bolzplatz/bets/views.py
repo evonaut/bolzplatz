@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 
-from .forms import BetForm
+from .forms import BetForm, BetChangeForm
 from .utils import BetFormValidMixin
 from .models import Bet, Match
 from .decorators import require_authenticated_permission
@@ -61,38 +61,51 @@ class BetCreate(BetFormValidMixin, View):
 
 
 class BetChange(BetFormValidMixin, View):
-    form_class = BetForm
+    form_class = BetChangeForm
     template_name = 'bets/bets_change.html'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id):
+    def get_bet(self, id, user):
         try:
             bet = Bet.objects.get(pk=id)
-            if bet.user != request.user:
+            if bet.user != user:
                 # Changing other users' bets is bad style
                 bet = None
         except:
             bet = None
-        return render(
-            request,
-            self.template_name,
-            {'id': id,
-             'bet': bet})
+        return bet
 
-    def post(self, request):
-        bound_form = self.form_class(request.POST, user=request.user)
+    def get(self, request, id):
+        bet = self.get_bet(id, request.user)
+        if bet is None:
+            return redirect('bets:bets_home')
+        else:
+            form = self.form_class(instance=bet)
+            return render(
+                request,
+                self.template_name,
+                {'id': id,
+                 'bet': bet,
+                 'form': form})
+
+    def post(self, request, id):
+        bet = self.get_bet(id, request.user)
+        bound_form = self.form_class(
+            request.POST,
+            instance=bet)
         if bound_form.is_valid():
             new_bet = bound_form.save(request)
-            return redirect('bets:bets_create')
+            return redirect('bets:bets_home')
         else:
             return render(
                 request,
                 self.template_name,
-                {'form': bound_form}
-            )
+                {'id': id,
+                 'bet': bet,
+                 'form': bound_form})
 
 
 class BetHome(View):

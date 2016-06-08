@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .models import Bet, Match
 
+
 class BetForm(forms.ModelForm):
     class Meta:
         model = Bet
@@ -30,3 +31,16 @@ class BetForm(forms.ModelForm):
         if commit:
             bet.save()
             return bet
+
+
+class BetChangeForm(forms.ModelForm):
+    class Meta:
+        model = Bet
+        fields = ['match', 'score_home', 'score_visitor']
+        widgets = {'match': forms.HiddenInput()}
+
+    def clean_match(self):
+        match = self.cleaned_data['match']
+        if match.date <= timezone.now():
+            raise ValidationError(_("You can only change bets for games that haven't started yet"))
+        return match
