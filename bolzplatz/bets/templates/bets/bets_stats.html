@@ -1,0 +1,40 @@
+{% extends parent_template|default:"bets/base_bets.html" %}
+{% load i18n %}
+{% block title %}
+{{ block.super }} - {% trans "Stats" %}
+{% endblock %}
+
+{% block main %}
+<h3>{% trans "Stats" %}</h3>
+<p>{% trans "Everybody loves numbers :-)" %}</p>
+<div class="row">
+  <div class="col-xs-4">
+    <div class="list-group">
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-flag"></span> {% trans "Total matches" %} <span class="badge">{{ stats.match_count_total }}</span>
+      </span>
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-flag"></span> {% trans "Completed matches" %} <span class="badge">{{ stats.match_count_completed }}</span>
+      </span>
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-ok"></span> {% trans "Total Bets" %} <span class="badge">{{ stats.bet_count_total }}</span>
+      </span>
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-ok"></span> {% trans "Evaluated Bets" %} <span class="badge">{{ stats.bet_count_evaluated }}</span>
+      </span>
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {% trans "Goals" %} <span class="badge">{{ stats.goals }}</span>
+      </span>
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-user"></span> {% trans "Users" %} <span class="badge">{{ stats.user_count }}</span>
+      </span>
+      <span class="list-group-item">
+        <span class="glyphicon glyphicon-user"></span> {% trans "Groups" %} <span class="badge">{{ stats.group_count }}</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.db.models import Sum
+
+from users.models import Profile, Group
 
 from .forms import BetForm, BetChangeForm
 from .utils import BetFormValidMixin
@@ -184,6 +187,28 @@ class BetEvaluate(View):
             self.template_name,
             {'scores': scores}
         )
+
+
+@login_required
+def bet_stats(request):
+    template_name = 'bets/bets_stats.html'
+    stats = {
+        'match_count_total': Match.objects.count(),
+        'match_count_completed': Match.objects.filter(completed=True).count(),
+        'bet_count_total': Bet.objects.count(),
+        'bet_count_evaluated': Bet.objects.exclude(score=None).count(),
+        'user_count': Profile.objects.count(),
+        'group_count': Group.objects.count()
+    }
+    goals = Match.objects.aggregate(Sum('score_home'), Sum('score_visitor'))
+    goals_total = 0
+    for key in goals:
+        goals_total += goals[key]
+    stats['goals'] = goals_total
+
+    return render(request,
+                  template_name,
+                  {'stats': stats})
 
 
 @login_required

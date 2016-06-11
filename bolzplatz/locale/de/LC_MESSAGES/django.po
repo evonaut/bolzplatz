@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-08 15:17+0200\n"
+"POT-Creation-Date: 2016-06-11 15:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,7 @@ msgstr "Du hast für dieses Spiel bereits einen Tipp abgegeben!"
 msgid "You can only bet on games that haven't started yet"
 msgstr "Du kannst nur Tipps für noch nicht laufende Spiele abgeben"
 
+#: bets/forms.py:45
 msgid "You can only change bets for games that haven't started yet"
 msgstr "Tipps können nur für noch nicht gestartete Spiele geändert werden"
 
@@ -35,7 +36,6 @@ msgid "Change Bet"
 msgstr "Tipp ändern"
 
 #: bets/templates/bets/bets_change.html:9
-
 msgid "Match:"
 msgstr "Spiel:"
 
@@ -59,8 +59,6 @@ msgstr "Du kannst bis zum Start eines Spiels Tipps abgeben."
 
 #: bets/templates/bets/bets_evaluate.html:4
 #: bets/templates/bets/bets_home.html:44
-msgid "Evaluate Bets"
-msgstr "Tippauswertung"
 
 #: bets/templates/bets/bets_evaluate.html:7
 msgid "Bet Evaluation"
@@ -166,6 +164,45 @@ msgstr "Punkte"
 msgid "Draw"
 msgstr "Unentschieden"
 
+#: bets/templates/bets/bets_stats.html:4 bets/templates/bets/bets_stats.html:8
+#: templates/navbar.html:24
+msgid "Stats"
+msgstr "Statistik"
+
+#: bets/templates/bets/bets_stats.html:9
+msgid "Everybody loves numbers :-)"
+msgstr "Jeder liebt Zahlen :-)"
+
+#: bets/templates/bets/bets_stats.html:14
+msgid "Total matches"
+msgstr "Spiele"
+
+#: bets/templates/bets/bets_stats.html:17
+msgid "Completed matches"
+msgstr "Beendete Spiele"
+
+#: bets/templates/bets/bets_stats.html:20
+msgid "Evaluate Bets"
+msgstr "Tippauswertung"
+
+msgid "Total Bets"
+msgstr "Tipps"
+
+msgid "Evaluated Bets"
+msgstr "Ausgewertete Tipps"
+
+#: bets/templates/bets/bets_stats.html:26
+msgid "Goals"
+msgstr "Tore"
+
+#: bets/templates/bets/bets_stats.html:29
+msgid "Users"
+msgstr "Benutzer"
+
+#: bets/templates/bets/bets_stats.html:32
+msgid "Groups"
+msgstr "Gruppen"
+
 #: config/settings/base.py:107
 msgid "English"
 msgstr "Englisch"
@@ -198,19 +235,19 @@ msgstr "Alle Gruppen"
 msgid "Euro 2016 Betting"
 msgstr "Euro 2016 Tippspiel"
 
-#: templates/navbar.html:24
+#: templates/navbar.html:25
 msgid "Imprint"
 msgstr "Impressum"
 
-#: templates/navbar.html:28
+#: templates/navbar.html:29
 msgid "Logout"
 msgstr "Abmelden"
 
-#: templates/navbar.html:30
+#: templates/navbar.html:31
 msgid "Register"
 msgstr "Registrieren"
 
-#: templates/navbar.html:31 users/templates/users/login_form.html:11
+#: templates/navbar.html:32 users/templates/users/login_form.html:11
 msgid "Login"
 msgstr "Anmelden"
 
@@ -220,7 +257,7 @@ msgstr "Ein Benutzer dieses Namens existiert bereits."
 
 #: users/forms.py:44
 msgid "Please select a group."
-msgstr ""
+msgstr "Bitte wähle eine Gruppe."
 
 #: users/templates/users/logout.html:4
 msgid "You are now logged out."
