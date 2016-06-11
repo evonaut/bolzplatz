@@ -38,10 +38,11 @@
 {% endfor %}
 </table>
 
-<p><a href="{% url 'bets:bets_create' %}">{% trans "Place Bets" %}</a></p>
-
-{% if perms.bets.evaluate_bets %}
-    <p><a href="{% url 'bets:bets_evaluate' %}">{% trans "Evaluate Bets" %}</a></p>
-{% endif %}
+<p>
+    <a href="{% url 'bets:bets_create' %}" class="btn btn-primary btn-sm" role="button">{% trans "Place Bets" %}</a>
+    {% if perms.bets.evaluate_bets %}
+    <a href="{% url 'bets:bets_evaluate' %}" class="btn btn-warning btn-sm" role="button">{% trans "Evaluate Bets" %}</a>
+    {% endif %}
+</p>
 
 {% endblock %}
