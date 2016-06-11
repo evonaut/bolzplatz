@@ -9,10 +9,23 @@ server {
         listen 80;
         server_name bolzplatz.tips;
 
+        # Redirect to HTTPS version
+        return 301 https://bolzplatz.tips$request_uri;
+    }
+
+server {
+        listen 443 ssl;
+        server_name bolzplatz.tips;
+
         client_max_body_size 4G;
 
         access_log /var/log/nginx/bolzplatz-access.log;
         error_log /var/log/nginx/bolzplatz-error.log;
+
+        # SSL Configuration
+        ssl_certificate /etc/letsencrypt/live/bolzplatz.tips/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/bolzplatz.tips/privkey.pem;
+        ssl_dhparam /etc/ssl/certs/dhparam.pem;
 
         location /static/ {
             alias /srv/bolzplatz/app/bolzplatz/static/;
@@ -27,7 +40,7 @@ server {
                 add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
                 if (!-f $request_filename) {
                         proxy_pass http://bolzplatz_server;
-                         break;
+                        break;
                 }
         }
     }
