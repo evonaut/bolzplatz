@@ -8,7 +8,11 @@
     <table class="table table-hover">
     <tr><th>{% trans "Rank" %}</th><th>{% trans "User" %}</th><th>{% trans "Score" %}</th></tr>
     {% for rank in ranking %}
-    <tr><td>{{ rank.0 }}</td><td>{{ rank.1 }}</td><td>{{ rank.2 }}</td></tr>
+        {% if rank.3 %}
+            <tr class="success"><td>{{ rank.0 }}</td><td>{{ rank.1 }}</td><td>{{ rank.2 }}</td></tr>
+        {% else %}
+            <tr><td>{{ rank.0 }}</td><td>{{ rank.1 }}</td><td>{{ rank.2 }}</td></tr>
+        {% endif %}
     {% empty %}
         <tr><td colspan=3>{% trans "No scores available." %}</td></tr>
     {% endfor %}

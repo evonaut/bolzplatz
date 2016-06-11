@@ -46,7 +46,10 @@ class ScoreHome(View):
                     this_rank = rank
                     highscore = this_score
                     highscore_count = 1
-                ranking.append((this_rank, str(profile.user), profile.score))
+                if profile.user == request.user:
+                    ranking.append((this_rank, str(profile.user), profile.score, True))
+                else:
+                    ranking.append((this_rank, str(profile.user), profile.score, False))
 
         # Build a list of groups containing members
         all_groups = Group.objects.all()
