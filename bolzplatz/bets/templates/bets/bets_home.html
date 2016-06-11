@@ -5,44 +5,49 @@
 {% endblock %}
 {% block main %}
 <h3>{% trans "My Bets" %}</h3>
-
-
-<table class="table table-hover">
-<tr>
-    <th>{% trans "Match" %}</th>
-    <th>{% trans "Date" %}</th>
-    <th>{% trans "Bet" %}</th>
-    <th>{% trans "Result" %}</th>
-    <th>{% trans "Score" %}</th>
-</tr>
-{% for bet in bets %}
-<tr>
-    <td>{{ bet.match }}</td>
-    <td>{{ bet.match.date }}</td>
-    <td>{% if bet.match.date > now %}
-        <a href="{% url 'bets:bets_change' id=bet.pk %}">{{ bet.score_home }}:{{ bet.score_visitor }}</a>
-        {% else %}
-        {{ bet.score_home }}:{{ bet.score_visitor }}
-        {% endif %}
-    </td>
-    <td>{% if bet.match.completed %}
-           {{ bet.match.score_home }}:{{ bet.match.score_visitor }}
-        {% else %}
-            -
-        {% endif %}
-    </td>
-    <td>{% if bet.score = None %}-{% else %}{{ bet.score}}{% endif %}</td>
-</tr>
-{% empty %}
-    <tr><td colspan=4>{% trans "You have not placed bets yet." %}</td></tr>
-{% endfor %}
-</table>
-
-<p>
-    <a href="{% url 'bets:bets_create' %}" class="btn btn-primary btn-sm" role="button">{% trans "Place Bets" %}</a>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-10">
+    <table class="table table-hover">
+    <tr>
+        <th>{% trans "Match" %}</th>
+        <th>{% trans "Date" %}</th>
+        <th>{% trans "Bet" %}</th>
+        <th>{% trans "Result" %}</th>
+        <th>{% trans "Score" %}</th>
+    </tr>
+    {% for bet in bets %}
+    <tr>
+        <td>{{ bet.match }}</td>
+        <td>{{ bet.match.date }}</td>
+        <td>{% if bet.match.date > now %}
+            <a href="{% url 'bets:bets_change' id=bet.pk %}">{{ bet.score_home }}:{{ bet.score_visitor }}</a>
+            {% else %}
+            {{ bet.score_home }}:{{ bet.score_visitor }}
+            {% endif %}
+        </td>
+        <td>{% if bet.match.completed %}
+               {{ bet.match.score_home }}:{{ bet.match.score_visitor }}
+            {% else %}
+                -
+            {% endif %}
+        </td>
+        <td>{% if bet.score = None %}-{% else %}{{ bet.score}}{% endif %}</td>
+    </tr>
+    {% empty %}
+        <tr><td colspan=4>{% trans "You have not placed bets yet." %}</td></tr>
+    {% endfor %}
+    </table>
+  </div>
+  <div class="col-xs-2 col-sm-2 col-md-2">
+    <p>
+        <a href="{% url 'bets:bets_create' %}" class="btn btn-primary btn-sm" role="button">{% trans "Place Bets" %}</a>
+    </p>
     {% if perms.bets.evaluate_bets %}
-    <a href="{% url 'bets:bets_evaluate' %}" class="btn btn-warning btn-sm" role="button">{% trans "Evaluate Bets" %}</a>
+    <p>
+       <a href="{% url 'bets:bets_evaluate' %}" class="btn btn-warning btn-sm" role="button">{% trans "Evaluate Bets" %}</a>
+    </p>
     {% endif %}
-</p>
+  </div>
+</div>
 
 {% endblock %}
