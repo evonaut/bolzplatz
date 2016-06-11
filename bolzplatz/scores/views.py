@@ -52,7 +52,7 @@ class ScoreHome(View):
                     ranking.append((this_rank, str(profile.user), profile.score, False))
 
         # Build a list of groups containing members
-        all_groups = Group.objects.all()
+        all_groups = Group.objects.all().order_by('slug')
         active_groups = []
         for this_group in all_groups:
             if len(this_group.profile_set.all()):
