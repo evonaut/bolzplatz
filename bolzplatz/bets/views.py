@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 
@@ -168,10 +170,13 @@ class BetEvaluate(View):
                         # Bet is 100% correct and results in four points
                         score += 1
             user = bet.user
-            user.profile.score += score
+            try:
+                user.profile.score += score
+                user.profile.save()
+            except ObjectDoesNotExist:
+                score = 0
             bet.score = score
             bet.save()
-            user.profile.save()
             scores[str(user)] = scores.get(str(user), 0) + score
 
         return render(
