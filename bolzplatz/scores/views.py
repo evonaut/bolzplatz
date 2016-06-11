@@ -32,18 +32,21 @@ class ScoreHome(View):
             group = _('All Groups')
 
         ranking = []
-        rank = 0
-        for profile in profiles:
-            this_score = profile.score
-            if rank > 0:
-                if this_score != last_score:
-                    rank += 1
-                this_rank = rank
-            else:
-                rank = 1
-                this_rank = 1
-                last_score = this_score
-            ranking.append((this_rank, str(profile.user), profile.score))
+        if profiles:
+            rank = 1
+            highscore = profiles[0].score
+            highscore_count = 0
+            for profile in profiles:
+                this_score = profile.score
+                if this_score == highscore:
+                    this_rank = rank
+                    highscore_count += 1
+                else:
+                    rank += highscore_count
+                    this_rank = rank
+                    highscore = this_score
+                    highscore_count = 1
+                ranking.append((this_rank, str(profile.user), profile.score))
 
         # Build a list of groups containing members
         all_groups = Group.objects.all()
